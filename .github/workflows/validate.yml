@@ -1,0 +1,18 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Test the issue letter parser
+        run: python3 -m unittest discover -s scripts/tests -t scripts
+
+      - name: Validate offer files
+        run: python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
