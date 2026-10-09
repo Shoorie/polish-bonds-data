@@ -1,0 +1,56 @@
+name: Update offer
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-offer
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install pdftotext
+        run: sudo apt-get update && sudo apt-get install --yes poppler-utils
+
+      - name: Read the current offer from issue letters
+        run: python3 scripts/fetch_offer.py
+
+      - name: Validate offer files
+        run: python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
+
+      - name: Open a pull request when the offer changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Offer unchanged"
+            exit 0
+          fi
+
+          month=$(python3 -c "import json; print(json.load(open('v1/offer.json'))['month'])")
+          branch="offer/$month"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --create "$branch"
+          git add v1
+          git commit --message "Update offer to $month"
+          git push --force origin "$branch"
+
+          if [ -z "$(gh pr list --head "$branch" --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --base main \
+              --head "$branch" \
+              --title "Update offer to $month" \
+              --body "New monthly offer read from the issue letters on obligacjeskarbowe.pl and the NBP reference rate. Check the numbers against the letters before merging."
+          fi
