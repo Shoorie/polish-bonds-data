@@ -11,8 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Test the issue letter parser
+      - name: Test the parsers and validators
         run: python3 -m unittest discover -s scripts/tests -t scripts
 
       - name: Validate offer files
         run: python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
+
+      - name: Validate inflation file
+        run: python3 scripts/validate_inflation.py v1/inflation.json

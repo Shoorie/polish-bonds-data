@@ -1,0 +1,809 @@
+{
+  "formatVersion": 1,
+  "months": [
+    {
+      "month": "2010-01",
+      "yearOnYearBasisPoints": 350
+    },
+    {
+      "month": "2010-02",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2010-03",
+      "yearOnYearBasisPoints": 260
+    },
+    {
+      "month": "2010-04",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2010-05",
+      "yearOnYearBasisPoints": 220
+    },
+    {
+      "month": "2010-06",
+      "yearOnYearBasisPoints": 230
+    },
+    {
+      "month": "2010-07",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2010-08",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2010-09",
+      "yearOnYearBasisPoints": 250
+    },
+    {
+      "month": "2010-10",
+      "yearOnYearBasisPoints": 280
+    },
+    {
+      "month": "2010-11",
+      "yearOnYearBasisPoints": 270
+    },
+    {
+      "month": "2010-12",
+      "yearOnYearBasisPoints": 310
+    },
+    {
+      "month": "2011-01",
+      "yearOnYearBasisPoints": 360
+    },
+    {
+      "month": "2011-02",
+      "yearOnYearBasisPoints": 360
+    },
+    {
+      "month": "2011-03",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2011-04",
+      "yearOnYearBasisPoints": 450
+    },
+    {
+      "month": "2011-05",
+      "yearOnYearBasisPoints": 500
+    },
+    {
+      "month": "2011-06",
+      "yearOnYearBasisPoints": 420
+    },
+    {
+      "month": "2011-07",
+      "yearOnYearBasisPoints": 410
+    },
+    {
+      "month": "2011-08",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2011-09",
+      "yearOnYearBasisPoints": 390
+    },
+    {
+      "month": "2011-10",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2011-11",
+      "yearOnYearBasisPoints": 480
+    },
+    {
+      "month": "2011-12",
+      "yearOnYearBasisPoints": 460
+    },
+    {
+      "month": "2012-01",
+      "yearOnYearBasisPoints": 410
+    },
+    {
+      "month": "2012-02",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2012-03",
+      "yearOnYearBasisPoints": 390
+    },
+    {
+      "month": "2012-04",
+      "yearOnYearBasisPoints": 400
+    },
+    {
+      "month": "2012-05",
+      "yearOnYearBasisPoints": 360
+    },
+    {
+      "month": "2012-06",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2012-07",
+      "yearOnYearBasisPoints": 400
+    },
+    {
+      "month": "2012-08",
+      "yearOnYearBasisPoints": 380
+    },
+    {
+      "month": "2012-09",
+      "yearOnYearBasisPoints": 380
+    },
+    {
+      "month": "2012-10",
+      "yearOnYearBasisPoints": 340
+    },
+    {
+      "month": "2012-11",
+      "yearOnYearBasisPoints": 280
+    },
+    {
+      "month": "2012-12",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2013-01",
+      "yearOnYearBasisPoints": 170
+    },
+    {
+      "month": "2013-02",
+      "yearOnYearBasisPoints": 130
+    },
+    {
+      "month": "2013-03",
+      "yearOnYearBasisPoints": 100
+    },
+    {
+      "month": "2013-04",
+      "yearOnYearBasisPoints": 80
+    },
+    {
+      "month": "2013-05",
+      "yearOnYearBasisPoints": 50
+    },
+    {
+      "month": "2013-06",
+      "yearOnYearBasisPoints": 20
+    },
+    {
+      "month": "2013-07",
+      "yearOnYearBasisPoints": 110
+    },
+    {
+      "month": "2013-08",
+      "yearOnYearBasisPoints": 110
+    },
+    {
+      "month": "2013-09",
+      "yearOnYearBasisPoints": 100
+    },
+    {
+      "month": "2013-10",
+      "yearOnYearBasisPoints": 80
+    },
+    {
+      "month": "2013-11",
+      "yearOnYearBasisPoints": 60
+    },
+    {
+      "month": "2013-12",
+      "yearOnYearBasisPoints": 70
+    },
+    {
+      "month": "2014-01",
+      "yearOnYearBasisPoints": 50
+    },
+    {
+      "month": "2014-02",
+      "yearOnYearBasisPoints": 70
+    },
+    {
+      "month": "2014-03",
+      "yearOnYearBasisPoints": 70
+    },
+    {
+      "month": "2014-04",
+      "yearOnYearBasisPoints": 30
+    },
+    {
+      "month": "2014-05",
+      "yearOnYearBasisPoints": 20
+    },
+    {
+      "month": "2014-06",
+      "yearOnYearBasisPoints": 30
+    },
+    {
+      "month": "2014-07",
+      "yearOnYearBasisPoints": -20
+    },
+    {
+      "month": "2014-08",
+      "yearOnYearBasisPoints": -30
+    },
+    {
+      "month": "2014-09",
+      "yearOnYearBasisPoints": -30
+    },
+    {
+      "month": "2014-10",
+      "yearOnYearBasisPoints": -60
+    },
+    {
+      "month": "2014-11",
+      "yearOnYearBasisPoints": -60
+    },
+    {
+      "month": "2014-12",
+      "yearOnYearBasisPoints": -100
+    },
+    {
+      "month": "2015-01",
+      "yearOnYearBasisPoints": -140
+    },
+    {
+      "month": "2015-02",
+      "yearOnYearBasisPoints": -160
+    },
+    {
+      "month": "2015-03",
+      "yearOnYearBasisPoints": -150
+    },
+    {
+      "month": "2015-04",
+      "yearOnYearBasisPoints": -110
+    },
+    {
+      "month": "2015-05",
+      "yearOnYearBasisPoints": -90
+    },
+    {
+      "month": "2015-06",
+      "yearOnYearBasisPoints": -80
+    },
+    {
+      "month": "2015-07",
+      "yearOnYearBasisPoints": -70
+    },
+    {
+      "month": "2015-08",
+      "yearOnYearBasisPoints": -60
+    },
+    {
+      "month": "2015-09",
+      "yearOnYearBasisPoints": -80
+    },
+    {
+      "month": "2015-10",
+      "yearOnYearBasisPoints": -70
+    },
+    {
+      "month": "2015-11",
+      "yearOnYearBasisPoints": -60
+    },
+    {
+      "month": "2015-12",
+      "yearOnYearBasisPoints": -50
+    },
+    {
+      "month": "2016-01",
+      "yearOnYearBasisPoints": -90
+    },
+    {
+      "month": "2016-02",
+      "yearOnYearBasisPoints": -80
+    },
+    {
+      "month": "2016-03",
+      "yearOnYearBasisPoints": -90
+    },
+    {
+      "month": "2016-04",
+      "yearOnYearBasisPoints": -110
+    },
+    {
+      "month": "2016-05",
+      "yearOnYearBasisPoints": -90
+    },
+    {
+      "month": "2016-06",
+      "yearOnYearBasisPoints": -80
+    },
+    {
+      "month": "2016-07",
+      "yearOnYearBasisPoints": -90
+    },
+    {
+      "month": "2016-08",
+      "yearOnYearBasisPoints": -80
+    },
+    {
+      "month": "2016-09",
+      "yearOnYearBasisPoints": -50
+    },
+    {
+      "month": "2016-10",
+      "yearOnYearBasisPoints": -20
+    },
+    {
+      "month": "2016-11",
+      "yearOnYearBasisPoints": 0
+    },
+    {
+      "month": "2016-12",
+      "yearOnYearBasisPoints": 80
+    },
+    {
+      "month": "2017-01",
+      "yearOnYearBasisPoints": 170
+    },
+    {
+      "month": "2017-02",
+      "yearOnYearBasisPoints": 220
+    },
+    {
+      "month": "2017-03",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2017-04",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2017-05",
+      "yearOnYearBasisPoints": 190
+    },
+    {
+      "month": "2017-06",
+      "yearOnYearBasisPoints": 150
+    },
+    {
+      "month": "2017-07",
+      "yearOnYearBasisPoints": 170
+    },
+    {
+      "month": "2017-08",
+      "yearOnYearBasisPoints": 180
+    },
+    {
+      "month": "2017-09",
+      "yearOnYearBasisPoints": 220
+    },
+    {
+      "month": "2017-10",
+      "yearOnYearBasisPoints": 210
+    },
+    {
+      "month": "2017-11",
+      "yearOnYearBasisPoints": 250
+    },
+    {
+      "month": "2017-12",
+      "yearOnYearBasisPoints": 210
+    },
+    {
+      "month": "2018-01",
+      "yearOnYearBasisPoints": 190
+    },
+    {
+      "month": "2018-02",
+      "yearOnYearBasisPoints": 140
+    },
+    {
+      "month": "2018-03",
+      "yearOnYearBasisPoints": 130
+    },
+    {
+      "month": "2018-04",
+      "yearOnYearBasisPoints": 160
+    },
+    {
+      "month": "2018-05",
+      "yearOnYearBasisPoints": 170
+    },
+    {
+      "month": "2018-06",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2018-07",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2018-08",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2018-09",
+      "yearOnYearBasisPoints": 190
+    },
+    {
+      "month": "2018-10",
+      "yearOnYearBasisPoints": 180
+    },
+    {
+      "month": "2018-11",
+      "yearOnYearBasisPoints": 130
+    },
+    {
+      "month": "2018-12",
+      "yearOnYearBasisPoints": 110
+    },
+    {
+      "month": "2019-01",
+      "yearOnYearBasisPoints": 70
+    },
+    {
+      "month": "2019-02",
+      "yearOnYearBasisPoints": 120
+    },
+    {
+      "month": "2019-03",
+      "yearOnYearBasisPoints": 170
+    },
+    {
+      "month": "2019-04",
+      "yearOnYearBasisPoints": 220
+    },
+    {
+      "month": "2019-05",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2019-06",
+      "yearOnYearBasisPoints": 260
+    },
+    {
+      "month": "2019-07",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2019-08",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2019-09",
+      "yearOnYearBasisPoints": 260
+    },
+    {
+      "month": "2019-10",
+      "yearOnYearBasisPoints": 250
+    },
+    {
+      "month": "2019-11",
+      "yearOnYearBasisPoints": 260
+    },
+    {
+      "month": "2019-12",
+      "yearOnYearBasisPoints": 340
+    },
+    {
+      "month": "2020-01",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2020-02",
+      "yearOnYearBasisPoints": 470
+    },
+    {
+      "month": "2020-03",
+      "yearOnYearBasisPoints": 460
+    },
+    {
+      "month": "2020-04",
+      "yearOnYearBasisPoints": 340
+    },
+    {
+      "month": "2020-05",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2020-06",
+      "yearOnYearBasisPoints": 330
+    },
+    {
+      "month": "2020-07",
+      "yearOnYearBasisPoints": 300
+    },
+    {
+      "month": "2020-08",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2020-09",
+      "yearOnYearBasisPoints": 320
+    },
+    {
+      "month": "2020-10",
+      "yearOnYearBasisPoints": 310
+    },
+    {
+      "month": "2020-11",
+      "yearOnYearBasisPoints": 300
+    },
+    {
+      "month": "2020-12",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2021-01",
+      "yearOnYearBasisPoints": 260
+    },
+    {
+      "month": "2021-02",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2021-03",
+      "yearOnYearBasisPoints": 320
+    },
+    {
+      "month": "2021-04",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2021-05",
+      "yearOnYearBasisPoints": 470
+    },
+    {
+      "month": "2021-06",
+      "yearOnYearBasisPoints": 440
+    },
+    {
+      "month": "2021-07",
+      "yearOnYearBasisPoints": 500
+    },
+    {
+      "month": "2021-08",
+      "yearOnYearBasisPoints": 550
+    },
+    {
+      "month": "2021-09",
+      "yearOnYearBasisPoints": 590
+    },
+    {
+      "month": "2021-10",
+      "yearOnYearBasisPoints": 680
+    },
+    {
+      "month": "2021-11",
+      "yearOnYearBasisPoints": 780
+    },
+    {
+      "month": "2021-12",
+      "yearOnYearBasisPoints": 860
+    },
+    {
+      "month": "2022-01",
+      "yearOnYearBasisPoints": 940
+    },
+    {
+      "month": "2022-02",
+      "yearOnYearBasisPoints": 850
+    },
+    {
+      "month": "2022-03",
+      "yearOnYearBasisPoints": 1100
+    },
+    {
+      "month": "2022-04",
+      "yearOnYearBasisPoints": 1240
+    },
+    {
+      "month": "2022-05",
+      "yearOnYearBasisPoints": 1390
+    },
+    {
+      "month": "2022-06",
+      "yearOnYearBasisPoints": 1550
+    },
+    {
+      "month": "2022-07",
+      "yearOnYearBasisPoints": 1560
+    },
+    {
+      "month": "2022-08",
+      "yearOnYearBasisPoints": 1610
+    },
+    {
+      "month": "2022-09",
+      "yearOnYearBasisPoints": 1720
+    },
+    {
+      "month": "2022-10",
+      "yearOnYearBasisPoints": 1790
+    },
+    {
+      "month": "2022-11",
+      "yearOnYearBasisPoints": 1750
+    },
+    {
+      "month": "2022-12",
+      "yearOnYearBasisPoints": 1660
+    },
+    {
+      "month": "2023-01",
+      "yearOnYearBasisPoints": 1660
+    },
+    {
+      "month": "2023-02",
+      "yearOnYearBasisPoints": 1840
+    },
+    {
+      "month": "2023-03",
+      "yearOnYearBasisPoints": 1610
+    },
+    {
+      "month": "2023-04",
+      "yearOnYearBasisPoints": 1470
+    },
+    {
+      "month": "2023-05",
+      "yearOnYearBasisPoints": 1300
+    },
+    {
+      "month": "2023-06",
+      "yearOnYearBasisPoints": 1150
+    },
+    {
+      "month": "2023-07",
+      "yearOnYearBasisPoints": 1080
+    },
+    {
+      "month": "2023-08",
+      "yearOnYearBasisPoints": 1010
+    },
+    {
+      "month": "2023-09",
+      "yearOnYearBasisPoints": 820
+    },
+    {
+      "month": "2023-10",
+      "yearOnYearBasisPoints": 660
+    },
+    {
+      "month": "2023-11",
+      "yearOnYearBasisPoints": 660
+    },
+    {
+      "month": "2023-12",
+      "yearOnYearBasisPoints": 620
+    },
+    {
+      "month": "2024-01",
+      "yearOnYearBasisPoints": 370
+    },
+    {
+      "month": "2024-02",
+      "yearOnYearBasisPoints": 280
+    },
+    {
+      "month": "2024-03",
+      "yearOnYearBasisPoints": 200
+    },
+    {
+      "month": "2024-04",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2024-05",
+      "yearOnYearBasisPoints": 250
+    },
+    {
+      "month": "2024-06",
+      "yearOnYearBasisPoints": 260
+    },
+    {
+      "month": "2024-07",
+      "yearOnYearBasisPoints": 420
+    },
+    {
+      "month": "2024-08",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2024-09",
+      "yearOnYearBasisPoints": 490
+    },
+    {
+      "month": "2024-10",
+      "yearOnYearBasisPoints": 500
+    },
+    {
+      "month": "2024-11",
+      "yearOnYearBasisPoints": 470
+    },
+    {
+      "month": "2024-12",
+      "yearOnYearBasisPoints": 470
+    },
+    {
+      "month": "2025-01",
+      "yearOnYearBasisPoints": 490
+    },
+    {
+      "month": "2025-02",
+      "yearOnYearBasisPoints": 490
+    },
+    {
+      "month": "2025-03",
+      "yearOnYearBasisPoints": 490
+    },
+    {
+      "month": "2025-04",
+      "yearOnYearBasisPoints": 430
+    },
+    {
+      "month": "2025-05",
+      "yearOnYearBasisPoints": 400
+    },
+    {
+      "month": "2025-06",
+      "yearOnYearBasisPoints": 410
+    },
+    {
+      "month": "2025-07",
+      "yearOnYearBasisPoints": 310
+    },
+    {
+      "month": "2025-08",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2025-09",
+      "yearOnYearBasisPoints": 290
+    },
+    {
+      "month": "2025-10",
+      "yearOnYearBasisPoints": 280
+    },
+    {
+      "month": "2025-11",
+      "yearOnYearBasisPoints": 250
+    },
+    {
+      "month": "2025-12",
+      "yearOnYearBasisPoints": 240
+    },
+    {
+      "month": "2026-01",
+      "yearOnYearBasisPoints": 210
+    },
+    {
+      "month": "2026-02",
+      "yearOnYearBasisPoints": 210
+    },
+    {
+      "month": "2026-03",
+      "yearOnYearBasisPoints": 300
+    },
+    {
+      "month": "2026-04",
+      "yearOnYearBasisPoints": 320
+    },
+    {
+      "month": "2026-05",
+      "yearOnYearBasisPoints": 310
+    },
+    {
+      "month": "2026-06",
+      "yearOnYearBasisPoints": 250
+    },
+    {
+      "month": "2026-07",
+      "yearOnYearBasisPoints": 300
+    },
+    {
+      "month": "2026-08",
+      "yearOnYearBasisPoints": 340
+    },
+    {
+      "month": "2026-09",
+      "yearOnYearBasisPoints": 410
+    }
+  ]
+}
