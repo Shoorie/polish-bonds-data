@@ -1,6 +1,7 @@
 # Polish bonds data
 
-Monthly offer of Polish retail treasury bonds for the Kalkulator Obligacji app.
+Monthly offer of Polish retail treasury bonds and consumer price inflation for the Kalkulator
+Obligacji app.
 
 The current offer is served at:
 
@@ -8,7 +9,11 @@ The current offer is served at:
 https://shoorie.github.io/polish-bonds-data/v1/offer.json
 ```
 
-Past offers stay in `v1/offers/<month>.json`.
+Past offers stay in `v1/offers/<month>.json`. Monthly inflation is served at:
+
+```
+https://shoorie.github.io/polish-bonds-data/v1/inflation.json
+```
 
 The bonds guide shown in the app's Knowledge tab comes in a phone layout for reading in the app
 (light and dark) and in A4 for sharing and printing:
@@ -60,18 +65,45 @@ never needs floating point numbers.
 A new field may be added without changing `formatVersion`. Changing or removing a field needs
 `v2`.
 
+## Inflation format (v1)
+
+Consumer price inflation published by GUS, month by month from January 2010, in whole basis
+points over the same month of the previous year. Months without a final value (estimates,
+forecasts, preliminary data) are left out.
+
+```json
+{
+  "formatVersion": 1,
+  "months": [
+    {
+      "month": "2026-09",
+      "yearOnYearBasisPoints": 410
+    }
+  ]
+}
+```
+
+Months come in order with no gaps, so the last one is the latest published inflation.
+
 ## Updates
 
 The **Update offer** workflow runs every day. It reads each series page on
 obligacjeskarbowe.pl, parses the current issue letter and the NBP reference rate, and opens a
 pull request when anything changed. Check the numbers against the letters before merging.
 
-The **Validate** workflow tests the parser and checks every offer file on each pull request.
+The **Update inflation** workflow runs every day too. It reads the GUS SDP API (indicator 1832
+up to 2025 and 2728, which follows COICOP 2018, from 2026) and opens a pull request when a new
+month was published.
+
+The **Validate** workflow tests the parsers and checks every offer file and the inflation file on
+each pull request.
 
 Run it locally (needs `pdftotext` from poppler):
 
 ```
 python3 scripts/fetch_offer.py
+python3 scripts/fetch_inflation.py
 python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
+python3 scripts/validate_inflation.py v1/inflation.json
 python3 -m unittest discover -s scripts/tests -t scripts
 ```

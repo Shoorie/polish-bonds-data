@@ -1,0 +1,53 @@
+name: Update inflation
+
+on:
+  schedule:
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-inflation
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Read monthly inflation from GUS
+        run: python3 scripts/fetch_inflation.py
+
+      - name: Validate inflation file
+        run: python3 scripts/validate_inflation.py v1/inflation.json
+
+      - name: Open a pull request when inflation changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "Inflation unchanged"
+            exit 0
+          fi
+
+          month=$(python3 -c "import json; print(json.load(open('v1/inflation.json'))['months'][-1]['month'])")
+          branch="inflation/$month"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --create "$branch"
+          git add v1/inflation.json
+          git commit --message "Update inflation to $month"
+          git push --force origin "$branch"
+
+          if [ -z "$(gh pr list --head "$branch" --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --base main \
+              --head "$branch" \
+              --title "Update inflation to $month" \
+              --body "Monthly consumer price inflation read from the GUS SDP API. Check the latest month against the GUS release before merging."
+          fi
