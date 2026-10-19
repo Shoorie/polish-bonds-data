@@ -10,6 +10,15 @@ https://shoorie.github.io/polish-bonds-data/v1/offer.json
 
 Past offers stay in `v1/offers/<month>.json`.
 
+The bonds guide shown in the app's Knowledge tab is served in two themes:
+
+```
+https://shoorie.github.io/polish-bonds-data/v1/guide/guide-light.pdf
+https://shoorie.github.io/polish-bonds-data/v1/guide/guide-dark.pdf
+```
+
+Both are built from `docs/guide/przewodnik.typ` in the app repository with `docs/guide/build.sh`.
+
 ## Format (v1)
 
 All amounts are whole cents and all rates are whole basis points (1 bp = 0.01%), so the file
