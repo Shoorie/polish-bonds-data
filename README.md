@@ -26,6 +26,12 @@ https://shoorie.github.io/polish-bonds-data/v1/guide/guide.pdf
 
 All three are built from `docs/guide/przewodnik.typ` in the app repository with `docs/guide/build.sh`.
 
+The privacy policy of the app, linked from the stores and the app settings, is served at:
+
+```
+https://shoorie.github.io/polish-bonds-data/privacy/
+```
+
 ## Format (v1)
 
 All amounts are whole cents and all rates are whole basis points (1 bp = 0.01%), so the file
