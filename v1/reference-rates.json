@@ -1,0 +1,101 @@
+{
+  "formatVersion": 1,
+  "changes": [
+    {
+      "effectiveFrom": "2015-03-05",
+      "basisPoints": 150
+    },
+    {
+      "effectiveFrom": "2020-03-18",
+      "basisPoints": 100
+    },
+    {
+      "effectiveFrom": "2020-04-09",
+      "basisPoints": 50
+    },
+    {
+      "effectiveFrom": "2020-05-29",
+      "basisPoints": 10
+    },
+    {
+      "effectiveFrom": "2021-10-07",
+      "basisPoints": 50
+    },
+    {
+      "effectiveFrom": "2021-11-04",
+      "basisPoints": 125
+    },
+    {
+      "effectiveFrom": "2021-12-09",
+      "basisPoints": 175
+    },
+    {
+      "effectiveFrom": "2022-01-05",
+      "basisPoints": 225
+    },
+    {
+      "effectiveFrom": "2022-02-09",
+      "basisPoints": 275
+    },
+    {
+      "effectiveFrom": "2022-03-09",
+      "basisPoints": 350
+    },
+    {
+      "effectiveFrom": "2022-04-07",
+      "basisPoints": 450
+    },
+    {
+      "effectiveFrom": "2022-05-06",
+      "basisPoints": 525
+    },
+    {
+      "effectiveFrom": "2022-06-09",
+      "basisPoints": 600
+    },
+    {
+      "effectiveFrom": "2022-07-08",
+      "basisPoints": 650
+    },
+    {
+      "effectiveFrom": "2022-09-08",
+      "basisPoints": 675
+    },
+    {
+      "effectiveFrom": "2023-09-07",
+      "basisPoints": 600
+    },
+    {
+      "effectiveFrom": "2023-10-05",
+      "basisPoints": 575
+    },
+    {
+      "effectiveFrom": "2025-05-08",
+      "basisPoints": 525
+    },
+    {
+      "effectiveFrom": "2025-07-03",
+      "basisPoints": 500
+    },
+    {
+      "effectiveFrom": "2025-09-04",
+      "basisPoints": 475
+    },
+    {
+      "effectiveFrom": "2025-10-09",
+      "basisPoints": 450
+    },
+    {
+      "effectiveFrom": "2025-11-06",
+      "basisPoints": 425
+    },
+    {
+      "effectiveFrom": "2025-12-04",
+      "basisPoints": 400
+    },
+    {
+      "effectiveFrom": "2026-03-05",
+      "basisPoints": 375
+    }
+  ]
+}

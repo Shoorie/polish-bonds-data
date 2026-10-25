@@ -19,3 +19,6 @@ jobs:
 
       - name: Validate inflation file
         run: python3 scripts/validate_inflation.py v1/inflation.json
+
+      - name: Validate reference rates file
+        run: python3 scripts/validate_reference_rates.py v1/reference-rates.json

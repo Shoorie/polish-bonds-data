@@ -15,6 +15,12 @@ Past offers stay in `v1/offers/<month>.json`. Monthly inflation is served at:
 https://shoorie.github.io/polish-bonds-data/v1/inflation.json
 ```
 
+Changes of the NBP reference rate are served at:
+
+```
+https://shoorie.github.io/polish-bonds-data/v1/reference-rates.json
+```
+
 The bonds guide shown in the app's Knowledge tab comes in a phone layout for reading in the app
 (light and dark) and in A4 for sharing and printing:
 
@@ -91,6 +97,27 @@ forecasts, preliminary data) are left out.
 
 Months come in order with no gaps, so the last one is the latest published inflation.
 
+## Reference rates format (v1)
+
+Every change of the NBP reference rate with the day it took effect, starting with the rate in
+force on 1 November 2016, the first month of the offer archive. Rates are whole basis points.
+
+```json
+{
+  "formatVersion": 1,
+  "changes": [
+    {
+      "effectiveFrom": "2026-03-05",
+      "basisPoints": 375
+    }
+  ]
+}
+```
+
+Changes come in order of the day and each one differs from the previous rate, so the rate on any
+day is the last change on or before it. ROR and DOR need the exact day, because their interest
+follows the rate in force on the tenth working day before the month a period starts.
+
 ## Updates
 
 The **Update offer** workflow runs every day. It reads each series page on
@@ -101,7 +128,12 @@ The **Update inflation** workflow runs every day too. It reads the GUS SDP API (
 up to 2025 and 2728, which follows COICOP 2018, from 2026) and opens a pull request when a new
 month was published.
 
-The **Validate** workflow tests the parsers and checks every offer file and the inflation file on
+The **Update reference rates** workflow runs every day as well. The NBP website does not answer
+scripts, so the history comes from the daily central bank policy rates that BIS publishes from
+NBP data, and the latest decision from the current rates file on static.nbp.pl, which shows a new
+decision before BIS does. A decision that contradicts the history stops the workflow.
+
+The **Validate** workflow tests the parsers and checks every offer file, the inflation file and the reference rates file on
 each pull request.
 
 Run it locally (needs `pdftotext` from poppler):
@@ -109,7 +141,9 @@ Run it locally (needs `pdftotext` from poppler):
 ```
 python3 scripts/fetch_offer.py
 python3 scripts/fetch_inflation.py
+python3 scripts/fetch_reference_rates.py
 python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
 python3 scripts/validate_inflation.py v1/inflation.json
+python3 scripts/validate_reference_rates.py v1/reference-rates.json
 python3 -m unittest discover -s scripts/tests -t scripts
 ```

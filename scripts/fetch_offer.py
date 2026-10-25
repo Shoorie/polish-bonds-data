@@ -6,6 +6,7 @@ import urllib.request
 from pathlib import Path
 
 from issue_letter import read_series_terms
+from nbp_reference_rate import read_current_reference_rate
 from offer_file import offer_of, read_offer, write_offer
 
 SITE = "https://www.obligacjeskarbowe.pl"
@@ -54,11 +55,7 @@ def _issue_letter_text(series_page: str) -> str:
 
 
 def _reference_rate_basis_points() -> int:
-    rates = _download(NBP_RATES).decode("utf-8")
-    match = re.search(r'id="ref".*?oprocentowanie="(\d+),(\d{2})"', rates, re.DOTALL)
-    if not match:
-        raise ValueError("NBP reference rate not found")
-    return int(match.group(1)) * 100 + int(match.group(2))
+    return read_current_reference_rate(_download(NBP_RATES).decode("utf-8-sig")).basis_points
 
 
 def _pdf_text(pdf: bytes) -> str:
