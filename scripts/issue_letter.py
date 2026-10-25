@@ -52,7 +52,7 @@ def _issue_code(code: str, text: str) -> str:
 
 
 def _sale_month(text: str) -> str:
-    match = re.search(r"w dniach od \d+ do \d+ ([a-ząćęłńóśźż]+) (\d{4})", text)
+    match = re.search(r"w dniach od \d+ do (?:dnia )?(?:\d+ )+([a-ząćęłńóśźż]+) (\d{4})", text)
     if not match:
         raise ValueError("sale period not found")
     month = POLISH_MONTHS[match.group(1)]
@@ -60,7 +60,7 @@ def _sale_month(text: str) -> str:
 
 
 def _first_period_rate(text: str) -> int:
-    first_period = re.search(r"pierwszym okresie odsetkowym stopa procentowa wynosi (\d+,\d{2})%", text)
+    first_period = re.search(r"pierwszym okresie odsetkowym stopa procentowa wynos\w* (\d+,\d{2})%", text)
     fixed_for_whole_term = re.search(r"Oprocentowanie obligacji wynosi (\d+,\d{2})%", text)
     match = first_period or fixed_for_whole_term
     if not match:
@@ -69,12 +69,14 @@ def _first_period_rate(text: str) -> int:
 
 
 def _margin(text: str) -> int:
-    match = re.search(r"marż\w* w wysokości (\d+,\d{2})%", text)
+    later_periods = re.search(r"stał\w* marż\w* w wysokości (\d+,\d{2})%", text)
+    any_period = re.search(r"marż\w* w wysokości (\d+,\d{2})%", text)
+    match = later_periods or any_period
     return _basis_points(match.group(1)) if match else 0
 
 
 def _early_redemption_fee(text: str) -> int:
-    return _cents(_required(r"nie wyższą niż (\d+,\d{2}) zł", text, "early redemption fee"))
+    return _cents(_required(r"nie wyższą niż (\d+(?:,\d{2})?) zł", text, "early redemption fee"))
 
 
 def _exchange_price(text: str) -> int:
@@ -95,5 +97,5 @@ def _basis_points(percent: str) -> int:
 
 
 def _cents(amount: str) -> int:
-    pln, grosze = amount.split(",")
-    return int(pln) * 100 + int(grosze)
+    whole, _, hundredths = amount.partition(",")
+    return int(whole) * 100 + int(hundredths or 0)
