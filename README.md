@@ -9,7 +9,12 @@ The current offer is served at:
 https://shoorie.github.io/polish-bonds-data/v1/offer.json
 ```
 
-Past offers stay in `v1/offers/<month>.json`. Monthly inflation is served at:
+Every month since November 2016 has its offer in `v1/offers/<month>.json`, and the list of
+those months is served at:
+
+```
+https://shoorie.github.io/polish-bonds-data/v1/offer-months.json
+``` Monthly inflation is served at:
 
 ```
 https://shoorie.github.io/polish-bonds-data/v1/inflation.json
@@ -65,8 +70,8 @@ never needs floating point numbers.
 | Field | Meaning |
 | --- | --- |
 | `month` | Month the offer is sold in |
-| `referenceRateBasisPoints` | NBP reference rate when the offer was read |
-| `code` | Series: ROR, DOR, TOS, COI, EDO, ROS, ROD (each exactly once) |
+| `referenceRateBasisPoints` | NBP reference rate in force on the first day of the month |
+| `code` | Series sold that month, each once: ROR, DOR, TOS, COI, EDO, ROS, ROD (ROR and DOR from June 2022, TOS from August 2022) |
 | `issueCode` | Issue of the series sold this month |
 | `termYears` | Term of the series, used only to check the app agrees |
 | `firstPeriodRateBasisPoints` | Rate in the first interest period (the whole term for TOS) |
@@ -76,6 +81,30 @@ never needs floating point numbers.
 
 A new field may be added without changing `formatVersion`. Changing or removing a field needs
 `v2`.
+
+## Offer archive
+
+`v1/offer-months.json` lists the months that have an offer file, in order and with no gaps, and
+`v1/offer.json` is the same as the file of the last month.
+
+```json
+{
+  "formatVersion": 1,
+  "months": ["2016-11", "2016-12", "2026-10"]
+}
+```
+
+The archive was filled once with `scripts/backfill_offers.py` from the issue letters on
+obligacjeskarbowe.pl: issues still held by someone are under **Listy emisyjne** and redeemed ones
+under **Archiwum listów emisyjnych**. The script takes each issue's address from the page, because
+a few of them have typos (EDO1028 lives under `edo01028`), checks that the letter names the
+expected issue and month of sale, and prints any other document next to the letter, such as an
+amendment, so it can be checked by hand. Series sold before 2022 that are no longer offered (DOS,
+TOZ) are not in the archive: nobody holds them any more.
+
+Letters before May 2017 give a separate margin for the first period and a fixed margin for the
+later ones; `marginBasisPoints` is always the fixed one. The exchange price comes from each letter,
+because some months had a promotion (EDO bought in an exchange for 99,40 zł in summer 2023).
 
 ## Inflation format (v1)
 
@@ -121,8 +150,9 @@ follows the rate in force on the tenth working day before the month a period sta
 ## Updates
 
 The **Update offer** workflow runs every day. It reads each series page on
-obligacjeskarbowe.pl, parses the current issue letter and the NBP reference rate, and opens a
-pull request when anything changed. Check the numbers against the letters before merging.
+obligacjeskarbowe.pl, parses the current issue letter, takes the NBP reference rate in force on
+the first day of the month from `v1/reference-rates.json`, and opens a pull request when anything
+changed. Check the numbers against the letters before merging.
 
 The **Update inflation** workflow runs every day too. It reads the GUS SDP API (indicator 1832
 up to 2025 and 2728, which follows COICOP 2018, from 2026) and opens a pull request when a new
@@ -133,8 +163,8 @@ scripts, so the history comes from the daily central bank policy rates that BIS 
 NBP data, and the latest decision from the current rates file on static.nbp.pl, which shows a new
 decision before BIS does. A decision that contradicts the history stops the workflow.
 
-The **Validate** workflow tests the parsers and checks every offer file, the inflation file and the reference rates file on
-each pull request.
+The **Validate** workflow tests the parsers and checks every offer file, the offer archive, the
+inflation file and the reference rates file on each pull request.
 
 Run it locally (needs `pdftotext` from poppler):
 
@@ -143,6 +173,7 @@ python3 scripts/fetch_offer.py
 python3 scripts/fetch_inflation.py
 python3 scripts/fetch_reference_rates.py
 python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
+python3 scripts/validate_offer_archive.py v1
 python3 scripts/validate_inflation.py v1/inflation.json
 python3 scripts/validate_reference_rates.py v1/reference-rates.json
 python3 -m unittest discover -s scripts/tests -t scripts

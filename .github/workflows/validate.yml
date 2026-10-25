@@ -17,6 +17,9 @@ jobs:
       - name: Validate offer files
         run: python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
 
+      - name: Validate the offer archive
+        run: python3 scripts/validate_offer_archive.py v1
+
       - name: Validate inflation file
         run: python3 scripts/validate_inflation.py v1/inflation.json
 

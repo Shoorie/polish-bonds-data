@@ -28,6 +28,9 @@ jobs:
       - name: Validate offer files
         run: python3 scripts/validate_offer.py v1/offer.json v1/offers/*.json
 
+      - name: Validate the offer archive
+        run: python3 scripts/validate_offer_archive.py v1
+
       - name: Open a pull request when the offer changed
         env:
           GH_TOKEN: ${{ github.token }}

@@ -22,6 +22,13 @@ def read_reference_rates(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def changes_of(reference_rates: dict) -> list[RateChange]:
+    return [
+        RateChange(effective_from=entry["effectiveFrom"], basis_points=entry["basisPoints"])
+        for entry in reference_rates["changes"]
+    ]
+
+
 def _change_entry(change: RateChange) -> dict:
     return {
         "effectiveFrom": change.effective_from,

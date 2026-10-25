@@ -1,16 +1,15 @@
 import re
-import subprocess
 import sys
-import tempfile
 import urllib.request
 from pathlib import Path
 
 from issue_letter import read_series_terms
-from nbp_reference_rate import read_current_reference_rate
 from offer_file import offer_of, read_offer, write_offer
+from pdf_text import text_of
+from reference_rate import rate_on
+from reference_rates_file import changes_of, read_reference_rates
 
 SITE = "https://www.obligacjeskarbowe.pl"
-NBP_RATES = "https://static.nbp.pl/dane/stopy/stopy_procentowe.xml"
 OFFER_FOLDER = Path(__file__).resolve().parent.parent / "v1"
 
 SERIES_PAGES = {
@@ -31,7 +30,8 @@ def main() -> int:
         print(f"Issue letters cover different months: {sorted(months)}")
         return 1
 
-    offer = offer_of(months.pop(), _reference_rate_basis_points(), series)
+    month = months.pop()
+    offer = offer_of(month, _reference_rate_on_first_day_of(month), series)
     if offer == _current_offer():
         print("Offer unchanged")
         return 0
@@ -51,23 +51,12 @@ def _issue_letter_text(series_page: str) -> str:
     link = re.search(r'href="(/media_files/[^"]+\.pdf)"[^>]*>\s*Zobacz list emisyjny', page)
     if not link:
         raise ValueError(f"issue letter link not found on {series_page}")
-    return _pdf_text(_download(SITE + link.group(1)))
+    return text_of(_download(SITE + link.group(1)))
 
 
-def _reference_rate_basis_points() -> int:
-    return read_current_reference_rate(_download(NBP_RATES).decode("utf-8-sig")).basis_points
-
-
-def _pdf_text(pdf: bytes) -> str:
-    with tempfile.NamedTemporaryFile(suffix=".pdf") as file:
-        file.write(pdf)
-        file.flush()
-        return subprocess.run(
-            ["pdftotext", "-layout", file.name, "-"],
-            capture_output=True,
-            check=True,
-            text=True,
-        ).stdout
+def _reference_rate_on_first_day_of(month: str) -> int:
+    reference_rates = read_reference_rates(OFFER_FOLDER / "reference-rates.json")
+    return rate_on(changes_of(reference_rates), f"{month}-01")
 
 
 def _download(url: str) -> bytes:

@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "month": "2022-12",
+  "referenceRateBasisPoints": 675,
+  "series": [
+    {
+      "code": "ROR",
+      "issueCode": "ROR1223",
+      "termYears": 1,
+      "firstPeriodRateBasisPoints": 675,
+      "marginBasisPoints": 0,
+      "earlyRedemptionFeeCents": 50,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "DOR",
+      "issueCode": "DOR1224",
+      "termYears": 2,
+      "firstPeriodRateBasisPoints": 685,
+      "marginBasisPoints": 10,
+      "earlyRedemptionFeeCents": 70,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "TOS",
+      "issueCode": "TOS1225",
+      "termYears": 3,
+      "firstPeriodRateBasisPoints": 685,
+      "marginBasisPoints": 0,
+      "earlyRedemptionFeeCents": 70,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "COI",
+      "issueCode": "COI1226",
+      "termYears": 4,
+      "firstPeriodRateBasisPoints": 700,
+      "marginBasisPoints": 100,
+      "earlyRedemptionFeeCents": 70,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "EDO",
+      "issueCode": "EDO1232",
+      "termYears": 10,
+      "firstPeriodRateBasisPoints": 725,
+      "marginBasisPoints": 125,
+      "earlyRedemptionFeeCents": 200,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "ROS",
+      "issueCode": "ROS1228",
+      "termYears": 6,
+      "firstPeriodRateBasisPoints": 720,
+      "marginBasisPoints": 150,
+      "earlyRedemptionFeeCents": 70,
+      "exchangePriceCents": 10000
+    },
+    {
+      "code": "ROD",
+      "issueCode": "ROD1234",
+      "termYears": 12,
+      "firstPeriodRateBasisPoints": 750,
+      "marginBasisPoints": 175,
+      "earlyRedemptionFeeCents": 200,
+      "exchangePriceCents": 10000
+    }
+  ]
+}

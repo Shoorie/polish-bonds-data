@@ -1,0 +1,43 @@
+{
+  "formatVersion": 1,
+  "month": "2017-02",
+  "referenceRateBasisPoints": 150,
+  "series": [
+    {
+      "code": "COI",
+      "issueCode": "COI0221",
+      "termYears": 4,
+      "firstPeriodRateBasisPoints": 240,
+      "marginBasisPoints": 125,
+      "earlyRedemptionFeeCents": 70,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "EDO",
+      "issueCode": "EDO0227",
+      "termYears": 10,
+      "firstPeriodRateBasisPoints": 270,
+      "marginBasisPoints": 150,
+      "earlyRedemptionFeeCents": 200,
+      "exchangePriceCents": 9990
+    },
+    {
+      "code": "ROS",
+      "issueCode": "ROS0223",
+      "termYears": 6,
+      "firstPeriodRateBasisPoints": 280,
+      "marginBasisPoints": 175,
+      "earlyRedemptionFeeCents": 70,
+      "exchangePriceCents": 10000
+    },
+    {
+      "code": "ROD",
+      "issueCode": "ROD0229",
+      "termYears": 12,
+      "firstPeriodRateBasisPoints": 320,
+      "marginBasisPoints": 200,
+      "earlyRedemptionFeeCents": 200,
+      "exchangePriceCents": 10000
+    }
+  ]
+}
