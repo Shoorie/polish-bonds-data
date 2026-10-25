@@ -5,13 +5,14 @@ from pathlib import Path
 from offer_file import FORMAT_VERSION, SERIES_TERMS_IN_YEARS, read_offer
 
 FAMILY_SERIES = {"ROS", "ROD"}
+FIRST_SALE_MONTHS = {"ROR": "2022-06", "DOR": "2022-06", "TOS": "2022-08"}
 NOMINAL_PRICE_CENTS = 10_000
 
 
 def problems_of(offer: dict) -> list[str]:
     problems = []
     problems += _problems_of_header(offer)
-    problems += _problems_of_series_list(offer.get("series", []))
+    problems += _problems_of_series_list(offer)
     for entry in offer.get("series", []):
         problems += _problems_of_series(entry)
     return problems
@@ -28,11 +29,16 @@ def _problems_of_header(offer: dict) -> list[str]:
     return problems
 
 
-def _problems_of_series_list(series: list) -> list[str]:
-    codes = [entry.get("code") for entry in series]
-    if sorted(codes) != sorted(SERIES_TERMS_IN_YEARS):
-        return [f"series must contain each of {sorted(SERIES_TERMS_IN_YEARS)} once, found {codes}"]
+def _problems_of_series_list(offer: dict) -> list[str]:
+    codes = [entry.get("code") for entry in offer.get("series", [])]
+    on_sale = _series_on_sale_in(str(offer.get("month")))
+    if sorted(codes) != sorted(on_sale):
+        return [f"series must contain each of {sorted(on_sale)} once, found {codes}"]
     return []
+
+
+def _series_on_sale_in(month: str) -> list[str]:
+    return [code for code in SERIES_TERMS_IN_YEARS if month >= FIRST_SALE_MONTHS.get(code, month)]
 
 
 def _problems_of_series(entry: dict) -> list[str]:

@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 from inflation_file import FORMAT_VERSION, read_inflation
+from months import month_after
 
 FIRST_MONTH = "2010-01"
 LOWEST_BASIS_POINTS = -1_000
@@ -27,7 +28,7 @@ def _problems_of_month_order(months: list) -> list[str]:
     if names[0] != FIRST_MONTH:
         return [f"months must start at {FIRST_MONTH}"]
     for previous, current in zip(names, names[1:]):
-        if current != _month_after(previous):
+        if current != month_after(previous):
             return [f"{current} must come right after {previous}"]
     return []
 
@@ -41,12 +42,6 @@ def _problems_of_month(entry: dict) -> list[str]:
         return [f"{month}: yearOnYearBasisPoints must be between {LOWEST_BASIS_POINTS} and {HIGHEST_BASIS_POINTS}"]
     return []
 
-
-def _month_after(month: str) -> str:
-    year, number = (int(part) for part in str(month).split("-"))
-    if number == 12:
-        return f"{year + 1}-01"
-    return f"{year}-{number + 1:02d}"
 
 
 def main(paths: list[str]) -> int:

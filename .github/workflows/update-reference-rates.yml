@@ -1,0 +1,53 @@
+name: Update reference rates
+
+on:
+  schedule:
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-reference-rates
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Read NBP reference rate changes from BIS and NBP
+        run: python3 scripts/fetch_reference_rates.py
+
+      - name: Validate reference rates file
+        run: python3 scripts/validate_reference_rates.py v1/reference-rates.json
+
+      - name: Open a pull request when the reference rate changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "Reference rates unchanged"
+            exit 0
+          fi
+
+          day=$(python3 -c "import json; print(json.load(open('v1/reference-rates.json'))['changes'][-1]['effectiveFrom'])")
+          branch="reference-rates/$day"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --create "$branch"
+          git add v1/reference-rates.json
+          git commit --message "Update reference rate from $day"
+          git push --force origin "$branch"
+
+          if [ -z "$(gh pr list --head "$branch" --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --base main \
+              --head "$branch" \
+              --title "Update reference rate from $day" \
+              --body "NBP reference rate changes read from the BIS central bank policy rates and the current NBP rates. Check the latest decision against the NBP announcement before merging."
+          fi
