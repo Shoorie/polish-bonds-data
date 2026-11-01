@@ -1,11 +1,11 @@
 {
   "formatVersion": 1,
-  "month": "2026-10",
+  "month": "2026-11",
   "referenceRateBasisPoints": 375,
   "series": [
     {
       "code": "ROR",
-      "issueCode": "ROR1027",
+      "issueCode": "ROR1127",
       "termYears": 1,
       "firstPeriodRateBasisPoints": 400,
       "marginBasisPoints": 0,
@@ -14,7 +14,7 @@
     },
     {
       "code": "DOR",
-      "issueCode": "DOR1028",
+      "issueCode": "DOR1128",
       "termYears": 2,
       "firstPeriodRateBasisPoints": 415,
       "marginBasisPoints": 15,
@@ -23,7 +23,7 @@
     },
     {
       "code": "TOS",
-      "issueCode": "TOS1029",
+      "issueCode": "TOS1129",
       "termYears": 3,
       "firstPeriodRateBasisPoints": 440,
       "marginBasisPoints": 0,
@@ -32,7 +32,7 @@
     },
     {
       "code": "COI",
-      "issueCode": "COI1030",
+      "issueCode": "COI1130",
       "termYears": 4,
       "firstPeriodRateBasisPoints": 475,
       "marginBasisPoints": 150,
@@ -41,7 +41,7 @@
     },
     {
       "code": "EDO",
-      "issueCode": "EDO1036",
+      "issueCode": "EDO1136",
       "termYears": 10,
       "firstPeriodRateBasisPoints": 535,
       "marginBasisPoints": 200,
@@ -50,7 +50,7 @@
     },
     {
       "code": "ROS",
-      "issueCode": "ROS1032",
+      "issueCode": "ROS1132",
       "termYears": 6,
       "firstPeriodRateBasisPoints": 500,
       "marginBasisPoints": 200,
@@ -59,7 +59,7 @@
     },
     {
       "code": "ROD",
-      "issueCode": "ROD1038",
+      "issueCode": "ROD1138",
       "termYears": 12,
       "firstPeriodRateBasisPoints": 560,
       "marginBasisPoints": 250,
