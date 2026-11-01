@@ -38,14 +38,17 @@ class ValidateOfferArchiveTest(unittest.TestCase):
         )
 
     def test_current_offer_other_than_the_last_month_is_rejected(self):
+        last_month = self._read("offer-months.json")["months"][-1]
         self._edit("offer.json", lambda offer: offer.update(referenceRateBasisPoints=0))
-        self.assertIn("offer.json must be the same as offers/2026-10.json", problems_of_archive(self.folder))
+        self.assertIn(f"offer.json must be the same as offers/{last_month}.json", problems_of_archive(self.folder))
+
+    def _read(self, name: str) -> dict:
+        return json.loads((self.folder / name).read_text(encoding="utf-8"))
 
     def _edit(self, name: str, change) -> None:
-        path = self.folder / name
-        document = json.loads(path.read_text(encoding="utf-8"))
+        document = self._read(name)
         change(document)
-        path.write_text(json.dumps(document), encoding="utf-8")
+        (self.folder / name).write_text(json.dumps(document), encoding="utf-8")
 
 
 if __name__ == "__main__":
