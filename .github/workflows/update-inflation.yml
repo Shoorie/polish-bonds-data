@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  pages: write
 
 concurrency:
   group: update-inflation
@@ -19,13 +20,16 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: Test the parsers and validators
+        run: python3 -m unittest discover -s scripts/tests -t scripts
+
       - name: Read monthly inflation from GUS
         run: python3 scripts/fetch_inflation.py
 
       - name: Validate inflation file
         run: python3 scripts/validate_inflation.py v1/inflation.json
 
-      - name: Open a pull request when inflation changed
+      - name: Merge a pull request when inflation changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -49,5 +53,8 @@ jobs:
               --base main \
               --head "$branch" \
               --title "Update inflation to $month" \
-              --body "Monthly consumer price inflation read from the GUS SDP API. Check the latest month against the GUS release before merging."
+              --body "Monthly consumer price inflation read from the GUS SDP API. Validated and merged automatically."
           fi
+
+          gh pr merge "$branch" --rebase --delete-branch
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

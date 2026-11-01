@@ -2,12 +2,14 @@ name: Update offer
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 22 * * *"
+    - cron: "0 23 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
+  pages: write
 
 concurrency:
   group: update-offer
@@ -18,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
+      - name: Test the parsers and validators
+        run: python3 -m unittest discover -s scripts/tests -t scripts
 
       - name: Install pdftotext
         run: sudo apt-get update && sudo apt-get install --yes poppler-utils
@@ -31,7 +36,7 @@ jobs:
       - name: Validate the offer archive
         run: python3 scripts/validate_offer_archive.py v1
 
-      - name: Open a pull request when the offer changed
+      - name: Merge a pull request when the offer changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -55,5 +60,8 @@ jobs:
               --base main \
               --head "$branch" \
               --title "Update offer to $month" \
-              --body "New monthly offer read from the issue letters on obligacjeskarbowe.pl and the NBP reference rate. Check the numbers against the letters before merging."
+              --body "New monthly offer read from the issue letters on obligacjeskarbowe.pl and the NBP reference rate. Validated and merged automatically."
           fi
+
+          gh pr merge "$branch" --rebase --delete-branch
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
