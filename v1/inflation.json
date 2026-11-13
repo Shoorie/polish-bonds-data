@@ -804,6 +804,10 @@
     {
       "month": "2026-09",
       "yearOnYearBasisPoints": 410
+    },
+    {
+      "month": "2026-10",
+      "yearOnYearBasisPoints": 350
     }
   ]
 }
